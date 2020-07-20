@@ -207,4 +207,4 @@ if DEBUG:
     # output email to console instead of sending
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-FE_URL = env.str("FE_URL")
+FE_URL = env.str("FE_URL", "")
