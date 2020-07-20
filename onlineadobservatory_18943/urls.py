@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from allauth.account.views import confirm_email
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -44,7 +44,6 @@ schema_view = get_schema_view(
         description="API documentation for OnlineAdObservatory App",
     ),
     public=True,
-    permission_classes=(permissions.IsAuthenticated,),
 )
 
 urlpatterns += [
