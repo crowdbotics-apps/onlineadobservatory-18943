@@ -6,6 +6,7 @@ from home.api.v1.viewsets import (
     LoginViewSet,
     HomePageViewSet,
     CustomTextViewSet,
+    SendEmail
 )
 
 router = DefaultRouter()
@@ -16,4 +17,5 @@ router.register("homepage", HomePageViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
+    path("send_mail/", SendEmail.as_view())
 ]
