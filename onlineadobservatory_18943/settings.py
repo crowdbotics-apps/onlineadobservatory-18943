@@ -202,6 +202,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
+POLADS_API_TOKEN = env.str("POLADS_API_TOKEN", "")
+POLADS_BASE_API_URL = 'https://dev.ad-screener.ad-observatory.com'
 
 if DEBUG:
     # output email to console instead of sending
