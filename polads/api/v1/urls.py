@@ -41,7 +41,7 @@ urlpatterns = [
         views.ProxyPoladsView.as_view()
     ),
     path(  # Spend by Targeting of Region - Dummy data 7/14, live data 7/25
-        'total_spend/by_targeting/of_region/<int:region_id>',
+        'total_spend/by_targeting/of_region/<slug:region_name>',
         views.ProxyPoladsView.as_view()
     ),
     path(  # Spend by Targeting of Page - Dummy data 7/14, live data 7/25
