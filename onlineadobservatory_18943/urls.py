@@ -23,8 +23,6 @@ from drf_yasg import openapi
 urlpatterns = [
     path("", include("home.urls")),
     path("accounts/", include("allauth.urls")),
-    path("api/v1/", include("home.api.v1.urls")),
-    path("api/v1/", include("polads.api.v1.urls")),
     path("admin/", admin.site.urls),
     path("users/", include("users.urls", namespace="users")),
     path("rest-auth/", include("rest_auth.urls")),
@@ -32,6 +30,12 @@ urlpatterns = [
     path("rest-auth/registration/account-confirm-email/<str:key>/", confirm_email),
     path("rest-auth/registration/", include("rest_auth.registration.urls")),
 ]
+api_patterns = [
+    path("api/v1/", include(("home.api.v1.urls", "home"), namespace="home")),
+    path("api/v1/", include(("polads.api.v1.urls", "polads"), namespace="ad_observatory")),
+]
+
+urlpatterns += api_patterns
 
 admin.site.site_header = "OnlineAdObservatory"
 admin.site.site_title = "OnlineAdObservatory Admin Portal"
@@ -45,6 +49,7 @@ schema_view = get_schema_view(
         description="API documentation for OnlineAdObservatory App",
     ),
     public=True,
+    patterns=api_patterns
 )
 
 urlpatterns += [
